@@ -6,11 +6,13 @@ const parentDoubledCount = computed<number>(() => parentCount.value * 2);
 <template>
   <div>
     <h1>Triple Counter</h1>
-    <CounterComponent
-      counter-id="1"
-      :prop-count="parentCount"
-      :prop-doubled-count="parentDoubledCount"
-      @emit-increment="parentCount++"
-    />
+    <div v-for="i in 3" :key="i">
+      <CounterComponent
+        :counter-id="i"
+        :prop-count="parentCount"
+        :prop-doubled-count="parentDoubledCount"
+        @emit-increment="parentCount++"
+      />
+    </div>
   </div>
 </template>
